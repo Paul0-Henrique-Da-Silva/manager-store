@@ -14,6 +14,17 @@ const getAll = async (_request, response) => {
  }
 };
 
+const getId = async (request, response) => {
+  const { id } = request.params;
+  try {
+    const result = await productsServices.getById(id);
+    return response.status(result.code).json(result.message);
+  } catch (error) {
+    console.log(error);
+    return response.status(INTERNAL_SERVER_ERROR).json({ message: REQUEST_BROKEN });
+  }
+};
+
 module.exports = {
-  getAll
+  getAll, getId,
 };
