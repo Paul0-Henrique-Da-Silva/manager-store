@@ -7,4 +7,6 @@ const getAll = async () => {
   return result;
 };
 
-module.exports = getAll;
+module.exports = {
+  getAll
+};
