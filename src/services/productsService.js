@@ -11,4 +11,17 @@ const getById = async (id) => {
   return { code: 200, message: result };
 };
 
-module.exports = { getAll, getById };
+const insertProduct = async ({ name }) => {
+  const productId = await productsModel.insertProduct(name);
+  return { type: null, message: productId };
+};
+
+const updateById = async (productName, productId) => {
+  await productsModel.updateById(productName, productId);
+};
+
+const deleteById = async (productId) => {
+  await productsModel.deleteById(productId);
+};
+
+module.exports = { getAll, getById, insertProduct, updateById, deleteById };
