@@ -1,17 +1,22 @@
 const saleModel = require('../models/saleModel');
 
-const getAll = async () => {
-  const results = saleModel.getAll();
+const getAllSaleProduct = async () => {
+  const results = saleModel.getAllSaleProduct();
   return results;
 };
 
-const getById = async (id) => {
-  const result = await saleModel.getById(id);
+const getByIdSaleProduct = async (id) => {
+  const result = await saleModel.getByIdSaleProduct(id);
   return result.length === 0
     ? { code: 404, message: { message: 'Sale not found' } }
     : { code: 200, message: { message: result } };
 };
 
+const insertSale = async () => {
+  const saleId = await saleModel.insertSale();
+  return { type: null, message: saleId }
+};
+
 module.exports = {
-  getAll, getById,
+  getAllSaleProduct, getByIdSaleProduct, insertSale
 };
