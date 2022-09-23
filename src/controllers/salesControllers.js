@@ -13,7 +13,7 @@ const getByIdSaleProduct = async (request, response) => {
 };
 
 const insertSaleProduct = async (request, response) => {
-  const { message: saleId }= await salesService.insertSale();
+  const { message: saleId } = await salesService.insertSale();
   await  productsServices.insertProduct(request.body);
   const result = {id: saleId, itemsSold: request.body};
   return response.status(201).json(result);
